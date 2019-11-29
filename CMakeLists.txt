@@ -3,4 +3,6 @@ project(UKfest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(UKfest main.cpp)
+add_executable(sortDic sortDiccionario.cpp)
+
+file(COPY diccionario.txt DESTINATION "${UKfest_BINARY_DIR}")

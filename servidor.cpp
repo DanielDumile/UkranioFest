@@ -1,0 +1,51 @@
+#include "SocketDatagram.h"
+#include "PaqueteDatagrama.h"
+#include "respuesta.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/time.h>
+#include <iostream>
+
+
+static const int TAM_DATOS = 31;
+
+
+using namespace std;
+
+int main(int argc, char* argv[]){
+	// abre el archivo con las palabras comunes
+	// recibe una palabra y la checa
+	// retorna un int dependiendo si la encontro o nel
+
+    std::ifstream ifs("sortDic.txt");
+
+    std::vector<std::string> vec;
+    std::string palabra;
+
+    while (ifs >> palabra) {
+        vec.push_back(palabra);
+    }
+
+    timeval actual{}, final{};
+    std::string p;
+
+	Respuesta r(7200);
+	struct mensaje *m;
+    char datos[TAM_DATOS];
+
+	m = r.getRequest();
+	while(m != nullptr) {
+		memset(datos, 0, TAM_DATOS);
+		memcpy(datos, m->arguments, sizeof(char) * TAM_DATOS);
+
+        bool found = std::binary_search(vec.begin(), vec.end(), datos);
+
+        int reply = found ? 1 : 0 ;
+		r.sendReply((char *)&reply);
+	}	
+	
+	return 0;
+}

@@ -3,7 +3,7 @@ project(UKfest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(Proyecto)
+add_subdirectory(ProyectoSIRVETARDA)
 
 add_executable(sortDic sortDiccionario.cpp)
 

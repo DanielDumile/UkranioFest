@@ -32,12 +32,6 @@ struct mensaje* Respuesta::getRequest(void) {
 	struct mensaje *m;
 	memcpy(&m1,(struct mensaje *)a.obtieneDatos(),sizeof(struct mensaje));
 	m=&m1;
-	if(m->requestId!=sec)
-		sec=m->requestId;
-	else{
-		printf("Mensaje repetido\n");
-		return NULL;
-	}
 
 	int num[2];
 	char *ip3 = a.obtieneDireccion();
@@ -62,6 +56,7 @@ struct mensaje* Respuesta::getRequest(void) {
 	ipaux[aux.length()]='\0';
 
 	ip= ipaux;
+	printf("ip: %s\n", ip);
 	puerto = a.obtienePuerto();
 
 	return m;

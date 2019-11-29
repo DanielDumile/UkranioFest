@@ -13,3 +13,4 @@ set(COMMON_SRC "PaqueteDatagrama.cpp" "respuesta.cpp" "SocketDatagrama.cpp" "Sol
 add_executable(server servidor.cpp ${COMMON_SRC})
 
 file(COPY diccionario.txt DESTINATION "${UKfest_BINARY_DIR}")
+file(COPY textos_pruebas DESTINATION "${UKfest_BINARY_DIR}")

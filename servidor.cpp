@@ -29,17 +29,17 @@ int main(int argc, char* argv[]){
         vec.push_back(palabra);
     }
 
-    timeval actual{}, final{};
-    std::string p;
 
 	Respuesta r(7200);
 	struct mensaje *m;
     char datos[TAM_DATOS];
 
-	m = r.getRequest();
-	while(m != nullptr) {
+	while(true) {
+        m = r.getRequest();
 		memset(datos, 0, TAM_DATOS);
 		memcpy(datos, m->arguments, sizeof(char) * TAM_DATOS);
+
+		printf("datos: %s\n", datos);
 
         bool found = std::binary_search(vec.begin(), vec.end(), datos);
 

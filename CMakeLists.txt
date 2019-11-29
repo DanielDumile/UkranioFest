@@ -3,6 +3,8 @@ project(UKfest)
 
 set(CMAKE_CXX_STANDARD 11)
 
+add_subdirectory(Proyecto)
+
 add_executable(sortDic sortDiccionario.cpp)
 
 add_executable(findWord findWord.cpp)
